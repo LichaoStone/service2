@@ -1,0 +1,34 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+     # 注册中心地址
+     defaultZone: http://localhost:8760/eureka/
+  instance:
+    # 将自己的IP地址注册到注册中心
+    prefer-ip-address: true  
+     
+spring:
+  application:
+    # 用于指定这个微服务名称，也就是在注册中心显示的名称，其他微服务同个这个名称调用服务
+    name: service2
+  datasource:
+    url: jdbc:mysql://10.0.219.202:3306/integrate?characterEncoding=UTF-8
+    username: root
+    password: 123abc
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
